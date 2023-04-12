@@ -20,17 +20,4 @@ public class ServicesStatusApi {
 	public List<Service> services() {
 		return (List<Service>) serviceRespository.findAll();
 	}
-
-	/*
-	 * @PostMapping public void insert(@RequestBody Service us) {
-	 * serviceRespository.save(us); }
-	 * 
-	 * @PutMapping public void modify(@RequestBody Service us) {
-	 * serviceRespository.save(us); }
-	 */
-
-	/*
-	 * @DeleteMapping(value = "/{id}") public void delete(@PathVariable("id")
-	 * Integer id) { serviceRespository.deleteById(id); }
-	 */
 }

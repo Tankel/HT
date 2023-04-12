@@ -9,4 +9,6 @@ import com.az.HT.Entity.User;
 public interface UsersRepository extends CrudRepository<User, Integer> {
 	// List<User> findById(int user_id);
 	boolean existsUserByName(String name);
+
+	User findByEmailAndPassword(String email, String password);
 }

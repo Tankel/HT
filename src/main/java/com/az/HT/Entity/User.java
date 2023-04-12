@@ -37,18 +37,6 @@ public class User {
 		return id;
 	}
 
-	public User() {
-
-	}
-
-	public User(String email, String password) {
-		super();
-		this.id = 1000;
-		this.name = "";
-		this.email = email;
-		this.password = password;
-	}
-
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + "]";
@@ -77,5 +65,4 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 }

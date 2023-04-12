@@ -3,7 +3,11 @@ package com.az.HT.api.server;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,41 +25,17 @@ public class UsersApi {
 		return (List<User>) userRespository.findAll();
 	}
 
-	@GetMapping(value = "/login")
-	public User login() {
-		return new User("sbizley2@thetimes.co.uk", "f66i8rvW");
+	@PostMapping(value = "/login")
+	public ResponseEntity<User> loginUser(@RequestBody User user) {
+		User existingUser = userRespository.findByEmailAndPassword(user.getEmail(), user.getPassword());
+		if (existingUser != null) {
+			// return ResponseEntity.ok().build();
+			return ResponseEntity.ok(existingUser);
+		} else {
+			// return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or
+			// password");
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+		}
 	}
 
-	@GetMapping(value = "/login/status")
-	public boolean loginStatus() {
-		boolean exists = userRespository.existsUserByName(name);
-		return
-	}
-
-	/*
-	 * @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE)
-	 * public String echo(@RequestBody User us) { return us.toString(); }
-	 */
-	/*
-	 * @GetMapping(value = "/login") public User postBody(@RequestBody User us) {
-	 * return new User("npadkin1@tumblr.com", "rGwsLf0Igb"); }
-	 */
-	/*
-	 * @PostMapping public void insert(@RequestBody User us) {
-	 * userRespository.save(us); }
-	 * 
-	 * @PutMapping public void modify(@RequestBody User us) {
-	 * userRespository.save(us); }
-	 */
-
-	/*
-	 * @DeleteMapping(value = "/{id}") public void delete(@PathVariable("id")
-	 * Integer id) { userRespository.deleteById(id); }
-	 */
-
-	/*
-	 * @GetMapping(value = "/login/{name}") public boolean
-	 * exist(@PathVariable("name") String name) { boolean exists =
-	 * userRespository.existsUserByName(name); return exists; }
-	 */
 }
