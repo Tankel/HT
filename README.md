@@ -18,8 +18,8 @@ This is a demo made for the Hackaton track "Service Status Application - AstraZe
 ## Team
 The team members are:
 
-América Susunaga  
-Esbaide González  
-José Armando Cerna  
-Luis Reyes  
-Samuel Sánchez
+* América Susunaga  
+* Esbaide González  
+* José Armando Cerna  
+* Luis Reyes  
+* Samuel Sánchez
